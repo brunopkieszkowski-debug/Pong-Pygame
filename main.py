@@ -7,7 +7,8 @@ import menu
 from menu import *
 import BallCode
 from BallCode import *
-
+import PlayerPaddles
+from PlayerPaddles import *
 
 async def main():
     global Unstarted
@@ -46,7 +47,7 @@ async def main():
 #Classes
     ButtonInit(Game_State)    
     BallCode.BallInit()
-        
+    PlayerPaddles.PaddleInit()
 #Shapes
 
 #main loop
@@ -62,6 +63,9 @@ async def main():
         if Game_State["Unstarted"]:
             menu.MenuFuncs(win, Game_State)
         elif Game_State["OnePlayer"]:
+            BallCode.Funcs(win)
+            PlayerPaddles.Funcs(win)
+        elif Game_State["TwoPlayer"]:
             BallCode.Funcs(win)
         #win.blit(Play1PlayerDim, (100,100))                
         #sampleText = Big_font.render("SampleText!", True, back)
